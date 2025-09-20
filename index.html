@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edward Hinson - Portfolio</title>
+
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Font Awesome -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        --primary-color: #2c3e50;
+        --secondary-color: #3498db;
+        --accent-color: #e74c3c;
+        --text-dark: #2c3e50;
+        --text-light: #7f8c8d;
+        --bg-light: #ecf0f1;
+        --bg-dark: #34495e;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        color: var(--text-dark);
+      }
+
+      /* Hero Section */
+      .hero {
+        background: linear-gradient(
+          135deg,
+          var(--primary-color) 0%,
+          var(--bg-dark) 100%
+        );
+        color: white;
+        padding: 120px 0 80px;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+      }
+
+      .hero h1 {
+        font-size: 3.5rem;
+        margin-bottom: 1.5rem;
+        font-weight: 700;
+      }
+
+      .hero p {
+        font-size: 1.3rem;
+        margin-bottom: 2rem;
+        opacity: 0.9;
+      }
+
+      .btn-primary {
+        background-color: var(--secondary-color);
+        border-color: var(--secondary-color);
+        padding: 15px 30px;
+        font-weight: 600;
+        border-radius: 50px;
+        transition: all 0.3s ease;
+      }
+
+      .btn-primary:hover {
+        background-color: #2980b9;
+        border-color: #2980b9;
+        transform: translateY(-3px);
+        box-shadow: 0 10px 25px rgba(52, 152, 219, 0.4);
+      }
+
+      /* Section Styling */
+      .section {
+        padding: 80px 0;
+      }
+
+      .section-title {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: var(--text-dark);
+        margin-bottom: 3rem;
+        position: relative;
+      }
+
+      .section-title::after {
+        content: "";
+        display: block;
+        width: 80px;
+        height: 4px;
+        background: linear-gradient(
+          90deg,
+          var(--secondary-color),
+          var(--accent-color)
+        );
+        margin: 1rem auto;
+        border-radius: 2px;
+      }
+
+      /* About Section */
+      .about-image img {
+        width: 300px;
+        height: 300px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 5px solid var(--secondary-color);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      }
+
+      .about-text h3 {
+        color: var(--secondary-color);
+        margin-bottom: 1rem;
+        font-size: 1.5rem;
+        font-weight: 600;
+      }
+
+      .about-text p {
+        font-size: 1.1rem;
+        line-height: 1.8;
+        margin-bottom: 1.5rem;
+      }
+
+      /* Project Cards */
+      .project-card {
+        height: 100%;
+        border: none;
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+      }
+
+      .project-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+      }
+
+      .project-card .card-title {
+        color: var(--secondary-color);
+        font-weight: 600;
+        margin-bottom: 1rem;
+      }
+
+      .project-card .card-text {
+        color: var(--text-light);
+        margin-bottom: 1.5rem;
+      }
+
+      .btn-outline-primary {
+        color: var(--secondary-color);
+        border-color: var(--secondary-color);
+        border-radius: 25px;
+        padding: 8px 16px;
+        font-size: 0.9rem;
+        margin-right: 10px;
+        margin-bottom: 10px;
+      }
+
+      .btn-outline-primary:hover {
+        background-color: var(--secondary-color);
+        border-color: var(--secondary-color);
+      }
+
+      /* Music Cards */
+      .music-card {
+        background: linear-gradient(135deg, var(--accent-color), #c0392b);
+        color: white;
+        border-radius: 15px;
+        padding: 2rem;
+        text-align: center;
+        height: 100%;
+        transition: transform 0.3s ease;
+        border: none;
+      }
+
+      .music-card:hover {
+        transform: translateY(-5px);
+      }
+
+      .music-card i {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+      }
+
+      .music-card h3 {
+        margin-bottom: 1rem;
+        font-size: 1.3rem;
+        font-weight: 600;
+      }
+
+      .music-card .btn {
+        color: white;
+        border: 2px solid white;
+        border-radius: 25px;
+        padding: 10px 20px;
+        margin-top: 1rem;
+        transition: all 0.3s ease;
+      }
+
+      .music-card .btn:hover {
+        background: white;
+        color: var(--accent-color);
+        border-color: white;
+      }
+
+      /* Social Links */
+      .social-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 15px 25px;
+        background: white;
+        color: var(--text-dark);
+        text-decoration: none;
+        border-radius: 50px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+        margin: 10px;
+      }
+
+      .social-link:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        color: var(--text-dark);
+      }
+
+      .social-link i {
+        font-size: 1.2rem;
+      }
+
+      .social-link.github {
+        color: #333;
+      }
+      .social-link.linkedin {
+        color: #0077b5;
+      }
+      .social-link.twitter {
+        color: #1da1f2;
+      }
+      .social-link.instagram {
+        color: #e4405f;
+      }
+
+      /* Footer */
+      footer {
+        background: var(--text-dark);
+        color: white;
+        padding: 2rem 0;
+      }
+
+      /* Animations */
+      .fade-in {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: opacity 0.6s ease, transform 0.6s ease;
+      }
+
+      .fade-in.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* Responsive adjustments */
+      @media (max-width: 768px) {
+        .hero h1 {
+          font-size: 2.5rem;
+        }
+
+        .about-image img {
+          width: 250px;
+          height: 250px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav
+      class="navbar navbar-expand-lg navbar-light bg-white fixed-top shadow-sm"
+    >
+      <div class="container">
+        <a
+          class="navbar-brand fw-bold fs-3"
+          href="#"
+          style="color: var(--secondary-color)"
+          >Edward Hinson</a
+        >
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link fw-semibold" href="#about">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link fw-semibold" href="#projects">Projects</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link fw-semibold" href="#music">Music</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link fw-semibold" href="#contact">Contact</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="container">
+        <div class="row justify-content-center text-center">
+          <div class="col-lg-8">
+            <h1 class="fade-in">From Rock Star to Code Star</h1>
+            <p class="fade-in">
+              Musician • Audio Engineer • Software Developer
+            </p>
+            <a href="#projects" class="btn btn-primary btn-lg fade-in"
+              >View My Work</a
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section bg-light">
+      <div class="container">
+        <h2 class="section-title text-center">About Me</h2>
+        <div class="row align-items-center">
+          <div class="col-lg-4 text-center mb-4 mb-lg-0">
+            <div class="about-image">
+              <img
+                src="https://via.placeholder.com/300x300/3498db/ffffff?text=Edward+Hinson"
+                alt="Edward Hinson"
+                class="img-fluid"
+              />
+            </div>
+          </div>
+          <div class="col-lg-8">
+            <div class="about-text">
+              <h3>My Journey</h3>
+              <p>
+                I spent my early career as a rock musician and record producer,
+                creating music that moved people and shaped experiences. After
+                years in the music industry, I decided to pursue a new passion
+                and went back to school at Columbia University in my thirties.
+              </p>
+
+              <p>
+                Graduating with a Computer Science degree, I've discovered that
+                the same creativity and problem-solving skills that made me
+                successful in music now drive my passion for coding. I love
+                building applications that solve real-world problems and create
+                meaningful user experiences.
+              </p>
+
+              <p>
+                Today, I combine my artistic background with technical expertise
+                to create innovative software solutions. Whether it's developing
+                web applications, working with audio processing algorithms, or
+                building user interfaces, I bring a unique perspective to every
+                project.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section">
+      <div class="container">
+        <h2 class="section-title text-center">Coding Projects</h2>
+        <div class="row g-4">
+          <div class="col-lg-4 col-md-6">
+            <div class="card project-card h-100">
+              <div class="card-body">
+                <h5 class="card-title">Audio Processing Web App</h5>
+                <p class="card-text">
+                  A web application that combines my audio engineering
+                  background with modern web technologies. Features real-time
+                  audio analysis, filtering, and visualization tools.
+                </p>
+                <div class="d-flex flex-wrap">
+                  <a href="#" class="btn btn-outline-primary" target="_blank">
+                    <i class="fab fa-github me-2"></i>GitHub
+                  </a>
+                  <a href="#" class="btn btn-outline-primary" target="_blank">
+                    <i class="fas fa-external-link-alt me-2"></i>Live Demo
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6">
+            <div class="card project-card h-100">
+              <div class="card-body">
+                <h5 class="card-title">Music Collaboration Platform</h5>
+                <p class="card-text">
+                  A full-stack application that allows musicians to collaborate
+                  remotely. Built with React, Node.js, and WebRTC for real-time
+                  audio streaming.
+                </p>
+                <div class="d-flex flex-wrap">
+                  <a href="#" class="btn btn-outline-primary" target="_blank">
+                    <i class="fab fa-github me-2"></i>GitHub
+                  </a>
+                  <a href="#" class="btn btn-outline-primary" target="_blank">
+                    <i class="fas fa-external-link-alt me-2"></i>Live Demo
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6">
+            <div class="card project-card h-100">
+              <div class="card-body">
+                <h5 class="card-title">Portfolio Website</h5>
+                <p class="card-text">
+                  This responsive portfolio website built with modern HTML5,
+                  CSS3, and JavaScript. Features smooth animations and
+                  mobile-first design.
+                </p>
+                <div class="d-flex flex-wrap">
+                  <a href="#" class="btn btn-outline-primary" target="_blank">
+                    <i class="fab fa-github me-2"></i>GitHub
+                  </a>
+                  <a href="#" class="btn btn-outline-primary" target="_blank">
+                    <i class="fas fa-external-link-alt me-2"></i>Live Demo
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6">
+            <div class="card project-card h-100">
+              <div class="card-body">
+                <h5 class="card-title">Data Visualization Dashboard</h5>
+                <p class="card-text">
+                  A React-based dashboard for visualizing music industry data.
+                  Includes interactive charts, filtering capabilities, and
+                  real-time updates.
+                </p>
+                <div class="d-flex flex-wrap">
+                  <a href="#" class="btn btn-outline-primary" target="_blank">
+                    <i class="fab fa-github me-2"></i>GitHub
+                  </a>
+                  <a href="#" class="btn btn-outline-primary" target="_blank">
+                    <i class="fas fa-external-link-alt me-2"></i>Live Demo
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6">
+            <div class="card project-card h-100">
+              <div class="card-body">
+                <h5 class="card-title">E-commerce Platform</h5>
+                <p class="card-text">
+                  A full-featured e-commerce solution built with MERN stack.
+                  Includes user authentication, payment processing, and
+                  inventory management.
+                </p>
+                <div class="d-flex flex-wrap">
+                  <a href="#" class="btn btn-outline-primary" target="_blank">
+                    <i class="fab fa-github me-2"></i>GitHub
+                  </a>
+                  <a href="#" class="btn btn-outline-primary" target="_blank">
+                    <i class="fas fa-external-link-alt me-2"></i>Live Demo
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6">
+            <div class="card project-card h-100">
+              <div class="card-body">
+                <h5 class="card-title">Machine Learning Music Recommender</h5>
+                <p class="card-text">
+                  An AI-powered music recommendation system that analyzes user
+                  preferences and suggests new tracks. Built with Python and
+                  TensorFlow.
+                </p>
+                <div class="d-flex flex-wrap">
+                  <a href="#" class="btn btn-outline-primary" target="_blank">
+                    <i class="fab fa-github me-2"></i>GitHub
+                  </a>
+                  <a href="#" class="btn btn-outline-primary" target="_blank">
+                    <i class="fas fa-external-link-alt me-2"></i>Live Demo
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Music Section -->
+    <section id="music" class="section bg-light">
+      <div class="container">
+        <h2 class="section-title text-center">Musical Work</h2>
+        <div class="row g-4">
+          <div class="col-lg-4 col-md-6">
+            <div class="music-card">
+              <i class="fas fa-music"></i>
+              <h3>Music Production</h3>
+              <p>
+                Check out tracks I've produced and engineered for various
+                artists across different genres.
+              </p>
+              <a href="#" class="btn btn-outline-light" target="_blank"
+                >Listen Now</a
+              >
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6">
+            <div class="music-card">
+              <i class="fas fa-video"></i>
+              <h3>Live Performances</h3>
+              <p>
+                Watch videos of my past rock performances and see the energy I
+                brought to the stage.
+              </p>
+              <a href="#" class="btn btn-outline-light" target="_blank"
+                >Watch Videos</a
+              >
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6">
+            <div class="music-card">
+              <i class="fas fa-microphone"></i>
+              <h3>Audio Engineering</h3>
+              <p>
+                Explore my work as an audio engineer, including mixing,
+                mastering, and studio production.
+              </p>
+              <a href="#" class="btn btn-outline-light" target="_blank"
+                >View Portfolio</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+      <div class="container">
+        <h2 class="section-title text-center">Connect With Me</h2>
+        <div class="row justify-content-center">
+          <div class="col-lg-8 text-center">
+            <div class="d-flex flex-wrap justify-content-center">
+              <a href="#" class="social-link github" target="_blank">
+                <i class="fab fa-github"></i>
+                <span>GitHub</span>
+              </a>
+              <a href="#" class="social-link linkedin" target="_blank">
+                <i class="fab fa-linkedin"></i>
+                <span>LinkedIn</span>
+              </a>
+              <a href="#" class="social-link twitter" target="_blank">
+                <i class="fab fa-twitter"></i>
+                <span>Twitter</span>
+              </a>
+              <a href="#" class="social-link instagram" target="_blank">
+                <i class="fab fa-instagram"></i>
+                <span>Instagram</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white text-center py-4">
+      <div class="container">
+        <p class="mb-0">&copy; 2024 Edward Hinson. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+      // Smooth scrolling for navigation links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute("href"));
+          if (target) {
+            target.scrollIntoView({
+              behavior: "smooth",
+              block: "start",
+            });
+          }
+        });
+      });
+
+      // Fade in animation on scroll
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px",
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+          }
+        });
+      }, observerOptions);
+
+      // Observe all fade-in elements
+      document.querySelectorAll(".fade-in").forEach((el) => {
+        observer.observe(el);
+      });
+
+      // Add fade-in class to project cards and music cards
+      document.querySelectorAll(".project-card, .music-card").forEach((el) => {
+        el.classList.add("fade-in");
+        observer.observe(el);
+      });
+
+      // Close mobile menu when clicking on a link
+      document.querySelectorAll(".navbar-nav .nav-link").forEach((link) => {
+        link.addEventListener("click", () => {
+          const navbarCollapse = document.querySelector(".navbar-collapse");
+          if (navbarCollapse.classList.contains("show")) {
+            const bsCollapse = new bootstrap.Collapse(navbarCollapse);
+            bsCollapse.hide();
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
