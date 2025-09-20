@@ -177,44 +177,94 @@
 
       /* Music Cards */
       .music-card {
-        background: linear-gradient(135deg, var(--accent-color), #c0392b);
-        color: white;
-        border-radius: 15px;
-        padding: 2rem;
-        text-align: center;
-        height: 100%;
-        transition: transform 0.3s ease;
+        background: white;
         border: none;
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        height: 100%;
+        transition: all 0.3s ease;
+        overflow: hidden;
       }
 
       .music-card:hover {
-        transform: translateY(-5px);
+        transform: translateY(-10px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
       }
 
-      .music-card i {
-        font-size: 3rem;
-        margin-bottom: 1rem;
+      .music-card .youtube-thumbnail {
+        position: relative;
+        width: 100%;
+        height: 200px;
+        overflow: hidden;
+        border-radius: 15px 15px 0 0;
       }
 
-      .music-card h3 {
+      .music-card .youtube-thumbnail img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+      }
+
+      .music-card:hover .youtube-thumbnail img {
+        transform: scale(1.05);
+      }
+
+      .music-card .play-button {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 60px;
+        height: 60px;
+        background: rgba(255, 255, 255, 0.9);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 24px;
+        color: var(--accent-color);
+        transition: all 0.3s ease;
+        cursor: pointer;
+      }
+
+      .music-card .play-button:hover {
+        background: white;
+        transform: translate(-50%, -50%) scale(1.1);
+      }
+
+      .music-card .card-body {
+        padding: 1.5rem;
+      }
+
+      .music-card .card-title {
+        color: var(--secondary-color);
+        font-weight: 600;
         margin-bottom: 1rem;
         font-size: 1.3rem;
-        font-weight: 600;
+      }
+
+      .music-card .card-text {
+        color: var(--text-light);
+        margin-bottom: 1.5rem;
+        font-size: 0.95rem;
+        line-height: 1.6;
       }
 
       .music-card .btn {
+        background: var(--accent-color);
         color: white;
-        border: 2px solid white;
+        border: none;
         border-radius: 25px;
         padding: 10px 20px;
-        margin-top: 1rem;
+        font-size: 0.9rem;
         transition: all 0.3s ease;
       }
 
       .music-card .btn:hover {
-        background: white;
-        color: var(--accent-color);
-        border-color: white;
+        background: #c0392b;
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(231, 76, 60, 0.4);
       }
 
       /* Social Links */
@@ -409,7 +459,7 @@
                   <a href="#" class="btn btn-outline-primary" target="_blank">
                     <i class="fab fa-github me-2"></i>GitHub
                   </a>
-                  <a href="#" class="btn btn-outline-primary" target="_blank">
+                  <a href="#" class="btn btn-outline-primary" style="display: none;" target="_blank">
                     <i class="fas fa-external-link-alt me-2"></i>Live Demo
                   </a>
                 </div>
@@ -437,7 +487,7 @@
                   <a href="#" class="btn btn-outline-primary" target="_blank">
                     <i class="fab fa-github me-2"></i>GitHub
                   </a>
-                  <a href="#" class="btn btn-outline-primary" target="_blank">
+                  <a href="#" class="btn btn-outline-primary" style="display: none;" target="_blank">
                     <i class="fas fa-external-link-alt me-2"></i>Live Demo
                   </a>
                 </div>
@@ -466,7 +516,7 @@
                   <a href="#" class="btn btn-outline-primary" target="_blank">
                     <i class="fab fa-github me-2"></i>GitHub
                   </a>
-                  <a href="#" class="btn btn-outline-primary" target="_blank">
+                  <a href="#" class="btn btn-outline-primary" style="display: none;" target="_blank">
                     <i class="fas fa-external-link-alt me-2"></i>Live Demo
                   </a>
                 </div>
@@ -483,44 +533,89 @@
         <h2 class="section-title text-center">Musical Work</h2>
         <div class="row g-4">
           <div class="col-lg-4 col-md-6">
-            <div class="music-card">
-              <i class="fas fa-music"></i>
-              <h3>Music Production</h3>
-              <p>
-                Check out tracks I've produced and engineered for various
-                artists across different genres.
-              </p>
-              <a href="#" class="btn btn-outline-light" target="_blank"
-                >Listen Now</a
-              >
+            <div class="card music-card h-100">
+              <div class="youtube-thumbnail">
+                <img
+                  src="https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg"
+                  alt="Music Production Demo"
+                />
+                <div class="play-button" onclick="openYouTube('dQw4w9WgXcQ')">
+                  <i class="fas fa-play"></i>
+                </div>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">Music Production</h5>
+                <p class="card-text">
+                  Check out tracks I've produced and engineered for various
+                  artists across different genres. This demo showcases my
+                  production skills and audio engineering expertise.
+                </p>
+                <a
+                  href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+                  class="btn"
+                  target="_blank"
+                >
+                  <i class="fab fa-youtube me-2"></i>Watch on YouTube
+                </a>
+              </div>
             </div>
           </div>
 
           <div class="col-lg-4 col-md-6">
-            <div class="music-card">
-              <i class="fas fa-video"></i>
-              <h3>Live Performances</h3>
-              <p>
-                Watch videos of my past rock performances and see the energy I
-                brought to the stage.
-              </p>
-              <a href="#" class="btn btn-outline-light" target="_blank"
-                >Watch Videos</a
-              >
+            <div class="card music-card h-100">
+              <div class="youtube-thumbnail">
+                <img
+                  src="https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg"
+                  alt="Live Performance"
+                />
+                <div class="play-button" onclick="openYouTube('dQw4w9WgXcQ')">
+                  <i class="fas fa-play"></i>
+                </div>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">Live Performances</h5>
+                <p class="card-text">
+                  Watch videos of my past rock performances and see the energy I
+                  brought to the stage. Experience the raw power and passion of
+                  live music performance.
+                </p>
+                <a
+                  href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+                  class="btn"
+                  target="_blank"
+                >
+                  <i class="fab fa-youtube me-2"></i>Watch on YouTube
+                </a>
+              </div>
             </div>
           </div>
 
           <div class="col-lg-4 col-md-6">
-            <div class="music-card">
-              <i class="fas fa-microphone"></i>
-              <h3>Audio Engineering</h3>
-              <p>
-                Explore my work as an audio engineer, including mixing,
-                mastering, and studio production.
-              </p>
-              <a href="#" class="btn btn-outline-light" target="_blank"
-                >View Portfolio</a
-              >
+            <div class="card music-card h-100">
+              <div class="youtube-thumbnail">
+                <img
+                  src="https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg"
+                  alt="Audio Engineering Demo"
+                />
+                <div class="play-button" onclick="openYouTube('dQw4w9WgXcQ')">
+                  <i class="fas fa-play"></i>
+                </div>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">Audio Engineering</h5>
+                <p class="card-text">
+                  Explore my work as an audio engineer, including mixing,
+                  mastering, and studio production. See the technical side of
+                  music creation and sound design.
+                </p>
+                <a
+                  href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+                  class="btn"
+                  target="_blank"
+                >
+                  <i class="fab fa-youtube me-2"></i>Watch on YouTube
+                </a>
+              </div>
             </div>
           </div>
         </div>
@@ -616,6 +711,11 @@
           }
         });
       });
+
+      // Function to open YouTube videos
+      function openYouTube(videoId) {
+        window.open(`https://www.youtube.com/watch?v=${videoId}`, "_blank");
+      }
     </script>
   </body>
 </html>
