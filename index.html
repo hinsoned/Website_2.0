@@ -132,6 +132,7 @@
         border-radius: 15px;
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
         transition: all 0.3s ease;
+        overflow: hidden;
       }
 
       .project-card:hover {
@@ -139,15 +140,24 @@
         box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
       }
 
+      .project-card .card-img-top {
+        height: 250px;
+        object-fit: cover;
+        border-radius: 15px 15px 0 0;
+      }
+
       .project-card .card-title {
         color: var(--secondary-color);
         font-weight: 600;
         margin-bottom: 1rem;
+        font-size: 1.4rem;
       }
 
       .project-card .card-text {
         color: var(--text-light);
         margin-bottom: 1.5rem;
+        font-size: 1rem;
+        line-height: 1.6;
       }
 
       .btn-outline-primary {
@@ -340,11 +350,7 @@
         <div class="row align-items-center">
           <div class="col-lg-4 text-center mb-4 mb-lg-0">
             <div class="about-image">
-              <img
-                src="https://via.placeholder.com/300x300/3498db/ffffff?text=Edward+Hinson"
-                alt="Edward Hinson"
-                class="img-fluid"
-              />
+              <img src="on_a_boat.JPEG" alt="Edward Hinson" class="img-fluid" />
             </div>
           </div>
           <div class="col-lg-8">
@@ -385,12 +391,19 @@
         <div class="row g-4">
           <div class="col-lg-4 col-md-6">
             <div class="card project-card h-100">
+              <img
+                src="https://via.placeholder.com/400x250/3498db/ffffff?text=Audio+Processing+App"
+                class="card-img-top"
+                alt="Audio Processing Web App"
+              />
               <div class="card-body">
                 <h5 class="card-title">Audio Processing Web App</h5>
                 <p class="card-text">
-                  A web application that combines my audio engineering
-                  background with modern web technologies. Features real-time
-                  audio analysis, filtering, and visualization tools.
+                  A sophisticated web application that combines my audio
+                  engineering background with modern web technologies. Features
+                  real-time audio analysis, advanced filtering algorithms, and
+                  interactive visualization tools. Built with Web Audio API,
+                  React, and D3.js for stunning data visualizations.
                 </p>
                 <div class="d-flex flex-wrap">
                   <a href="#" class="btn btn-outline-primary" target="_blank">
@@ -406,12 +419,19 @@
 
           <div class="col-lg-4 col-md-6">
             <div class="card project-card h-100">
+              <img
+                src="https://via.placeholder.com/400x250/e74c3c/ffffff?text=Music+Collaboration+Platform"
+                class="card-img-top"
+                alt="Music Collaboration Platform"
+              />
               <div class="card-body">
                 <h5 class="card-title">Music Collaboration Platform</h5>
                 <p class="card-text">
-                  A full-stack application that allows musicians to collaborate
-                  remotely. Built with React, Node.js, and WebRTC for real-time
-                  audio streaming.
+                  A comprehensive full-stack application that enables musicians
+                  to collaborate remotely in real-time. Features WebRTC for
+                  low-latency audio streaming, shared project workspaces, and
+                  integrated chat functionality. Built with React, Node.js,
+                  Socket.io, and WebRTC for seamless remote collaboration.
                 </p>
                 <div class="d-flex flex-wrap">
                   <a href="#" class="btn btn-outline-primary" target="_blank">
@@ -427,75 +447,20 @@
 
           <div class="col-lg-4 col-md-6">
             <div class="card project-card h-100">
-              <div class="card-body">
-                <h5 class="card-title">Portfolio Website</h5>
-                <p class="card-text">
-                  This responsive portfolio website built with modern HTML5,
-                  CSS3, and JavaScript. Features smooth animations and
-                  mobile-first design.
-                </p>
-                <div class="d-flex flex-wrap">
-                  <a href="#" class="btn btn-outline-primary" target="_blank">
-                    <i class="fab fa-github me-2"></i>GitHub
-                  </a>
-                  <a href="#" class="btn btn-outline-primary" target="_blank">
-                    <i class="fas fa-external-link-alt me-2"></i>Live Demo
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6">
-            <div class="card project-card h-100">
-              <div class="card-body">
-                <h5 class="card-title">Data Visualization Dashboard</h5>
-                <p class="card-text">
-                  A React-based dashboard for visualizing music industry data.
-                  Includes interactive charts, filtering capabilities, and
-                  real-time updates.
-                </p>
-                <div class="d-flex flex-wrap">
-                  <a href="#" class="btn btn-outline-primary" target="_blank">
-                    <i class="fab fa-github me-2"></i>GitHub
-                  </a>
-                  <a href="#" class="btn btn-outline-primary" target="_blank">
-                    <i class="fas fa-external-link-alt me-2"></i>Live Demo
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6">
-            <div class="card project-card h-100">
-              <div class="card-body">
-                <h5 class="card-title">E-commerce Platform</h5>
-                <p class="card-text">
-                  A full-featured e-commerce solution built with MERN stack.
-                  Includes user authentication, payment processing, and
-                  inventory management.
-                </p>
-                <div class="d-flex flex-wrap">
-                  <a href="#" class="btn btn-outline-primary" target="_blank">
-                    <i class="fab fa-github me-2"></i>GitHub
-                  </a>
-                  <a href="#" class="btn btn-outline-primary" target="_blank">
-                    <i class="fas fa-external-link-alt me-2"></i>Live Demo
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6">
-            <div class="card project-card h-100">
+              <img
+                src="https://via.placeholder.com/400x250/2c3e50/ffffff?text=ML+Music+Recommender"
+                class="card-img-top"
+                alt="Machine Learning Music Recommender"
+              />
               <div class="card-body">
                 <h5 class="card-title">Machine Learning Music Recommender</h5>
                 <p class="card-text">
-                  An AI-powered music recommendation system that analyzes user
-                  preferences and suggests new tracks. Built with Python and
-                  TensorFlow.
+                  An intelligent AI-powered music recommendation system that
+                  analyzes user listening patterns and preferences to suggest
+                  new tracks. Utilizes collaborative filtering, content-based
+                  filtering, and deep learning algorithms. Built with Python,
+                  TensorFlow, and Flask for the backend API with a React
+                  frontend.
                 </p>
                 <div class="d-flex flex-wrap">
                   <a href="#" class="btn btn-outline-primary" target="_blank">
