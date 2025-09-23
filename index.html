@@ -35,16 +35,53 @@
 
       /* Hero Section */
       .hero {
-        background: linear-gradient(
-          135deg,
-          var(--primary-color) 0%,
-          var(--bg-dark) 100%
-        );
+        position: relative;
         color: white;
         padding: 120px 0 80px;
         min-height: 100vh;
         display: flex;
         align-items: center;
+        overflow: hidden;
+      }
+
+      .hero-slideshow {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -2;
+      }
+
+      .hero-slide {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        opacity: 0;
+        transition: opacity 1s ease-in-out;
+      }
+
+      .hero-slide.active {
+        opacity: 1;
+      }
+
+      .hero-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          135deg,
+          rgba(44, 62, 80, 0.8) 0%,
+          rgba(52, 73, 94, 0.7) 100%
+        );
+        z-index: -1;
       }
 
       .hero h1 {
@@ -378,12 +415,37 @@
 
     <!-- Hero Section -->
     <section class="hero">
+      <!-- Background Slideshow -->
+      <div class="hero-slideshow">
+        <div
+          class="hero-slide active"
+          style="background-image: url('Images/ARP_study.png')"
+        ></div>
+        <div
+          class="hero-slide"
+          style="background-image: url('Images/word_counts.png')"
+        ></div>
+        <div
+          class="hero-slide"
+          style="background-image: url('images/Butler.jpg')"
+        ></div>
+        <div
+          class="hero-slide"
+          style="background-image: url('images/on_stage1.jpg')"
+        ></div>
+      </div>
+
+      <!-- Overlay for text readability -->
+      <div class="hero-overlay"></div>
+
+      <!-- Content -->
       <div class="container">
         <div class="row justify-content-center text-center">
           <div class="col-lg-8">
             <h1 class="fade-in">Where Creativity Meets Code</h1>
             <p class="fade-in">
-              Computer Science Graduate • Python & Java Developer • Cloud & Data Analytics Focus
+              Computer Science Graduate • Python & Java Developer • Cloud & Data
+              Analytics Focus
             </p>
             <a href="#projects" class="btn btn-primary btn-lg fade-in"
               >View My Work</a
@@ -813,6 +875,24 @@
       function openYouTube(videoId) {
         window.open(`https://www.youtube.com/watch?v=${videoId}`, "_blank");
       }
+
+      // Hero slideshow functionality
+      function initHeroSlideshow() {
+        const slides = document.querySelectorAll(".hero-slide");
+        let currentSlide = 0;
+
+        function showNextSlide() {
+          slides[currentSlide].classList.remove("active");
+          currentSlide = (currentSlide + 1) % slides.length;
+          slides[currentSlide].classList.add("active");
+        }
+
+        // Change slide every 5 seconds
+        setInterval(showNextSlide, 5000);
+      }
+
+      // Initialize slideshow when page loads
+      document.addEventListener("DOMContentLoaded", initHeroSlideshow);
     </script>
   </body>
 </html>
