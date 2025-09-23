@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Client Work - Edward Hinson</title>
+
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Font Awesome -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        --primary-color: #2c3e50;
+        --secondary-color: #3498db;
+        --accent-color: #e74c3c;
+        --text-dark: #2c3e50;
+        --text-light: #7f8c8d;
+        --bg-light: #ecf0f1;
+        --bg-dark: #34495e;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        color: var(--text-dark);
+        background-color: var(--bg-light);
+      }
+
+      /* Header */
+      .page-header {
+        background: linear-gradient(
+          135deg,
+          var(--primary-color) 0%,
+          var(--bg-dark) 100%
+        );
+        color: white;
+        padding: 120px 0 80px;
+        text-align: center;
+      }
+
+      .page-header h1 {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+        font-weight: 700;
+      }
+
+      .page-header p {
+        font-size: 1.2rem;
+        opacity: 0.9;
+      }
+
+      /* Back Button */
+      .back-button {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        background: rgba(255, 255, 255, 0.2);
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 25px;
+        text-decoration: none;
+        transition: all 0.3s ease;
+      }
+
+      .back-button:hover {
+        background: rgba(255, 255, 255, 0.3);
+        color: white;
+        transform: translateY(-2px);
+      }
+
+      /* Section Styling */
+      .section {
+        padding: 80px 0;
+      }
+
+      .section-title {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: var(--text-dark);
+        margin-bottom: 3rem;
+        position: relative;
+        text-align: center;
+      }
+
+      .section-title::after {
+        content: "";
+        display: block;
+        width: 80px;
+        height: 4px;
+        background: linear-gradient(
+          90deg,
+          var(--secondary-color),
+          var(--accent-color)
+        );
+        margin: 1rem auto;
+        border-radius: 2px;
+      }
+
+      /* Client Cards */
+      .client-card {
+        background: white;
+        border: none;
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        height: 100%;
+        transition: all 0.3s ease;
+        overflow: hidden;
+        margin-bottom: 2rem;
+      }
+
+      .client-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+      }
+
+      .client-card .youtube-thumbnail {
+        position: relative;
+        width: 100%;
+        height: 200px;
+        overflow: hidden;
+        border-radius: 15px 15px 0 0;
+      }
+
+      .client-card .youtube-thumbnail img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+      }
+
+      .client-card:hover .youtube-thumbnail img {
+        transform: scale(1.05);
+      }
+
+      .client-card .play-button {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 60px;
+        height: 60px;
+        background: rgba(255, 255, 255, 0.9);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 24px;
+        color: var(--accent-color);
+        transition: all 0.3s ease;
+        cursor: pointer;
+      }
+
+      .client-card .play-button:hover {
+        background: white;
+        transform: translate(-50%, -50%) scale(1.1);
+      }
+
+      .client-card .card-body {
+        padding: 1.5rem;
+      }
+
+      .client-card .card-title {
+        color: var(--secondary-color);
+        font-weight: 600;
+        margin-bottom: 1rem;
+        font-size: 1.3rem;
+      }
+
+      .client-card .card-text {
+        color: var(--text-light);
+        margin-bottom: 1.5rem;
+        font-size: 0.95rem;
+        line-height: 1.6;
+      }
+
+      .client-card .btn {
+        background: var(--accent-color);
+        color: white;
+        border: none;
+        border-radius: 25px;
+        padding: 10px 20px;
+        font-size: 0.9rem;
+        transition: all 0.3s ease;
+        text-decoration: none;
+        display: inline-block;
+      }
+
+      .client-card .btn:hover {
+        background: #c0392b;
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(231, 76, 60, 0.4);
+        color: white;
+      }
+
+      /* Footer */
+      footer {
+        background: var(--text-dark);
+        color: white;
+        padding: 2rem 0;
+        text-align: center;
+      }
+
+      /* Animations */
+      .fade-in {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: opacity 0.6s ease, transform 0.6s ease;
+      }
+
+      .fade-in.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* Responsive adjustments */
+      @media (max-width: 768px) {
+        .page-header h1 {
+          font-size: 2.5rem;
+        }
+
+        .back-button {
+          position: relative;
+          top: auto;
+          left: auto;
+          margin-bottom: 2rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Page Header -->
+    <section class="page-header">
+      <div class="container">
+        <a href="index.html" class="back-button">
+          <i class="fas fa-arrow-left me-2"></i>Back to Portfolio
+        </a>
+        <h1 class="fade-in">Client Work</h1>
+        <p class="fade-in">Music Production & Audio Engineering Portfolio</p>
+      </div>
+    </section>
+
+    <!-- Clients Section -->
+    <section class="section">
+      <div class="container">
+        <h2 class="section-title">Featured Client Projects</h2>
+        <div class="row g-4">
+          <!-- Client 1 -->
+          <div class="col-lg-4 col-md-6">
+            <div class="card client-card h-100">
+              <div class="youtube-thumbnail">
+                <img
+                  src="https://img.youtube.com/vi/ugJjpKc_duA/hqdefault.jpg"
+                  alt="Client Project 1"
+                />
+                <div class="play-button" onclick="openYouTube('ugJjpKc_duA')">
+                  <i class="fas fa-play"></i>
+                </div>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">Artist Name - Song Title</h5>
+                <p class="card-text">
+                  Producer, engineer
+                </p>
+                <a
+                  href="https://www.youtube.com/watch?v=ugJjpKc_duA"
+                  class="btn"
+                  target="_blank"
+                >
+                  <i class="fab fa-youtube me-2"></i>Watch on YouTube
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Client 2 -->
+          <div class="col-lg-4 col-md-6">
+            <div class="card client-card h-100">
+              <div class="youtube-thumbnail">
+                <img
+                  src="https://img.youtube.com/vi/r4Sdwr2y8iA/hqdefault.jpg"
+                  alt="Client Project 2"
+                />
+                <div class="play-button" onclick="openYouTube('r4Sdwr2y8iA')">
+                  <i class="fas fa-play"></i>
+                </div>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">Antigone - Sink or Swim</h5>
+                <p class="card-text">
+                  Producer, Engineer, Mixer
+                </p>
+                <a
+                  href="https://www.youtube.com/watch?v=r4Sdwr2y8iA"
+                  class="btn"
+                  target="_blank"
+                >
+                  <i class="fab fa-youtube me-2"></i>Watch on YouTube
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Client 3 -->
+          <div class="col-lg-4 col-md-6">
+            <div class="card client-card h-100">
+              <div class="youtube-thumbnail">
+                <img
+                  src="https://img.youtube.com/vi/i2WC-mYjdlE/hqdefault.jpg"
+                  alt="Client Project 3"
+                />
+                <div class="play-button" onclick="openYouTube('i2WC-mYjdlE')">
+                  <i class="fas fa-play"></i>
+                </div>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">Altered Vision - Never Alone</h5>
+                <p class="card-text">
+                  Producer, Engineer, Mixer
+                </p>
+                <a
+                  href="https://www.youtube.com/watch?v=i2WC-mYjdlE"
+                  class="btn"
+                  target="_blank"
+                >
+                  <i class="fab fa-youtube me-2"></i>Watch on YouTube
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Client 4 -->
+          <div class="col-lg-4 col-md-6">
+            <div class="card client-card h-100">
+              <div class="youtube-thumbnail">
+                <img
+                  src="https://img.youtube.com/vi/ZlPBAzB-uZY/hqdefault.jpg"
+                  alt="Client Project 4"
+                />
+                <div class="play-button" onclick="openYouTube('ZlPBAzB-uZY')">
+                  <i class="fas fa-play"></i>
+                </div>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">Through All This Time - Honey, Where's My Good Jorts?</h5>
+                <p class="card-text">
+                  Vocal Engineer, Mixer
+                </p>
+                <a
+                  href="https://www.youtube.com/watch?v=ZlPBAzB-uZY"
+                  class="btn"
+                  target="_blank"
+                >
+                  <i class="fab fa-youtube me-2"></i>Watch on YouTube
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Client 5 -->
+          <div class="col-lg-4 col-md-6">
+            <div class="card client-card h-100">
+              <div class="youtube-thumbnail">
+                <img
+                  src="https://img.youtube.com/vi/qqotMWq5xSk/hqdefault.jpg"
+                  alt="Client Project 5"
+                />
+                <div class="play-button" onclick="openYouTube('qqotMWq5xSk')">
+                  <i class="fas fa-play"></i>
+                </div>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">Nova Mortis - What Do You Want?</h5>
+                <p class="card-text">
+                  Producer, Engineer, Mixer
+                </p>
+                <a
+                  href="http://youtube.com/watch?v=qqotMWq5xSk"
+                  class="btn"
+                  target="_blank"
+                >
+                  <i class="fab fa-youtube me-2"></i>Watch on YouTube
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Client 6 -->
+          <div class="col-lg-4 col-md-6">
+            <div class="card client-card h-100">
+              <div class="youtube-thumbnail">
+                <img
+                  src="https://img.youtube.com/vi/I6tc9FlQCjE/hqdefault.jpg"
+                  alt="Client Project 6"
+                />
+                <div class="play-button" onclick="openYouTube('I6tc9FlQCjE')">
+                  <i class="fas fa-play"></i>
+                </div>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">Sun of Nile - Division</h5>
+                <p class="card-text">
+                  Producer, Engineer, Mixer
+                </p>
+                <a
+                  href="https://www.youtube.com/watch?v=I6tc9FlQCjE"
+                  class="btn"
+                  target="_blank"
+                >
+                  <i class="fab fa-youtube me-2"></i>Watch on YouTube
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <p class="mb-0">&copy; 2024 Edward Hinson. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+      // Fade in animation on scroll
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px",
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+          }
+        });
+      }, observerOptions);
+
+      // Observe all fade-in elements
+      document.querySelectorAll(".fade-in").forEach((el) => {
+        observer.observe(el);
+      });
+
+      // Add fade-in class to client cards
+      document.querySelectorAll(".client-card").forEach((el) => {
+        el.classList.add("fade-in");
+        observer.observe(el);
+      });
+
+      // Function to open YouTube videos
+      function openYouTube(videoId) {
+        window.open(`https://www.youtube.com/watch?v=${videoId}`, "_blank");
+      }
+    </script>
+  </body>
+</html>
