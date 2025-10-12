@@ -310,6 +310,100 @@
         box-shadow: 0 5px 15px rgba(231, 76, 60, 0.4);
       }
 
+      /* Certifications Section */
+      .cert-card {
+        background: white;
+        border: none;
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        height: 100%;
+        transition: all 0.3s ease;
+        overflow: hidden;
+        text-align: center;
+        padding: 2rem;
+      }
+
+      .cert-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+      }
+
+      .cert-card .cert-icon {
+        width: 80px;
+        height: 80px;
+        margin: 0 auto 1.5rem;
+        background: linear-gradient(
+          135deg,
+          var(--secondary-color),
+          var(--accent-color)
+        );
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2rem;
+        color: white;
+      }
+
+      .cert-card .cert-badge-image {
+        width: 120px;
+        height: 120px;
+        margin: 0 auto 1.5rem;
+        border-radius: 15px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        overflow: hidden;
+        transition: transform 0.3s ease;
+      }
+
+      .cert-card .cert-badge-image:hover {
+        transform: scale(1.05);
+      }
+
+      .cert-card .cert-badge-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .cert-card .cert-title {
+        color: var(--secondary-color);
+        font-weight: 600;
+        margin-bottom: 1rem;
+        font-size: 1.3rem;
+      }
+
+      .cert-card .cert-issuer {
+        color: var(--text-light);
+        font-size: 1rem;
+        margin-bottom: 1rem;
+        font-weight: 500;
+      }
+
+      .cert-card .cert-date {
+        color: var(--text-light);
+        font-size: 0.9rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .cert-card .cert-badge {
+        display: inline-block;
+        background: var(--accent-color);
+        color: white;
+        padding: 8px 16px;
+        border-radius: 25px;
+        font-size: 0.9rem;
+        font-weight: 600;
+        text-decoration: none;
+        transition: all 0.3s ease;
+      }
+
+      .cert-card .cert-badge:hover {
+        background: #c0392b;
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(231, 76, 60, 0.4);
+        color: white;
+      }
+
       /* Social Links */
       .social-link {
         display: inline-flex;
@@ -407,6 +501,11 @@
             </li>
             <li class="nav-item">
               <a class="nav-link fw-semibold" href="#projects">Projects</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link fw-semibold" href="#certifications"
+                >Certifications</a
+              >
             </li>
             <li class="nav-item">
               <a class="nav-link fw-semibold" href="#music">Music</a>
@@ -657,6 +756,35 @@
       </div>
     </section>
 
+    <!-- Certifications Section -->
+    <section id="certifications" class="section bg-light">
+      <div class="container">
+        <h2 class="section-title text-center">Certifications</h2>
+        <div class="row g-4 justify-content-center">
+          <div class="col-lg-4 col-md-6">
+            <div class="cert-card">
+              <div class="cert-badge-image">
+                <img
+                  src="badge1.png"
+                  alt="AWS Certified Cloud Practitioner Badge"
+                />
+              </div>
+              <h5 class="cert-title">AWS Certified Cloud Practitioner</h5>
+              <p class="cert-issuer">Amazon Web Services</p>
+              <p class="cert-date">October 2025</p>
+              <a
+                href="https://www.credly.com/badges/7d09dd97-e6ab-4f5e-aff9-3b6a8af5f917"
+                class="cert-badge"
+                target="_blank"
+              >
+                <i class="fas fa-certificate me-2"></i>View Credential
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- Music Section -->
     <section id="music" class="section bg-light">
       <div class="container">
@@ -753,8 +881,8 @@
                 <h5 class="card-title">Live Performances</h5>
                 <p class="card-text">
                   Playing live shows was always my favorite part of being a
-                  musician. During my time playing out, I was fortunate enough to
-                  open for bands like Suicide Silence, The Red Jumpsuit
+                  musician. During my time playing out, I was fortunate enough
+                  to open for bands like Suicide Silence, The Red Jumpsuit
                   Apparatus, Born of Osiris, and more.
                 </p>
                 <a
@@ -860,11 +988,13 @@
         observer.observe(el);
       });
 
-      // Add fade-in class to project cards and music cards
-      document.querySelectorAll(".project-card, .music-card").forEach((el) => {
-        el.classList.add("fade-in");
-        observer.observe(el);
-      });
+      // Add fade-in class to project cards, music cards, and cert cards
+      document
+        .querySelectorAll(".project-card, .music-card, .cert-card")
+        .forEach((el) => {
+          el.classList.add("fade-in");
+          observer.observe(el);
+        });
 
       // Close mobile menu when clicking on a link
       document.querySelectorAll(".navbar-nav .nav-link").forEach((link) => {
